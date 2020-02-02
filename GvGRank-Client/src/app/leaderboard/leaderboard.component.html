@@ -1,0 +1,34 @@
+<div class="input-group">
+  <input type="text" [(ngModel)]='playerFilter' class="form-control" placeholder="Filter by name..." aria-label="Player's name" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-secondary" type="button" (click)='clear()'>Clear</button>
+  </div>
+</div>
+
+<br />
+
+
+<div class="row">
+
+  <div class="col-md-4">
+    <h1 align="center">Front</h1>
+    <div *ngFor="let player of (playerFilter) ? filterList(leaderboard) : leaderboard">
+      <p *ngIf="player.role==1">{{player.name}}</p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h1 align="center">Mid</h1>
+    <div *ngFor="let player of (playerFilter) ? filterList(leaderboard) : leaderboard">
+      <p *ngIf="player.role==2">{{player.name}}</p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h1 align="center">Back</h1>
+    <div *ngFor="let player of (playerFilter) ? filterList(leaderboard) : leaderboard">
+      <p *ngIf="player.role==3">{{player.name}}</p>
+    </div>
+  </div>
+
+</div>

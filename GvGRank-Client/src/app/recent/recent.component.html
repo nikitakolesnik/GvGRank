@@ -1,0 +1,18 @@
+<div class="input-group">
+  <input type="text" [(ngModel)]='playerFilter' (keyup.enter)='search()' class="form-control" placeholder="Filter by name..." aria-label="Player's name" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-secondary" type="button" (click)='search()'>Search</button>
+    <button class="btn btn-secondary" type="button" (click)='reset()'>Reset</button>
+  </div>
+</div>
+
+<br />
+
+<p class="center" *ngIf="voteCount != -1">{{voteCount}} total votes.</p>
+
+<br />
+
+<p *ngFor="let vote of (filteringResults) ? filteredRecentVotes : recentVotes">
+  {{vote[0]}} > {{vote[1]}}
+</p>
+

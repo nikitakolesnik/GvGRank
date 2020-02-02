@@ -1,0 +1,38 @@
+<div *ngIf="player1Name != '_'; else msg">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-5">
+      <button class="btn btn-block btn-primary btn-lg" (click)='vote1()'>
+        <span class="shrink-long-name" *ngIf="player1Name.length > 12; else e1">
+          {{player1Name}}
+        </span>
+        <ng-template #e1>
+          {{player1Name}}
+        </ng-template>
+      </button>
+    </div>
+
+    <div class="vs">VS</div>
+
+    <div class="col-md-5">
+      <button class="btn btn-block btn-danger btn-lg" (click)='vote2()'>
+        <span class="shrink-long-name" *ngIf="player2Name.length > 12; else e2">
+          {{player2Name}}
+        </span>
+        <ng-template #e2>
+          {{player2Name}}
+        </ng-template>
+      </button>
+    </div>
+
+  </div>
+  
+</div>
+
+<ng-template #msg>
+  <p>{{player2Name}}</p>
+  <br />
+</ng-template>
+
+<p><u (click)='getVote()'>Skip vote?</u></p>

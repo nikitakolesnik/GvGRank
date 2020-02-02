@@ -1,0 +1,14 @@
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.csprojAssemblyReference.cache
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.csproj.CoreCompileInputs.cache
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.RazorAssemblyInfo.cache
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.RazorAssemblyInfo.cs
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.AssemblyInfoInputs.cache
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.AssemblyInfo.cs
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\bin\Debug\netcoreapp2.2\GvGRank-Server.deps.json
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\bin\Debug\netcoreapp2.2\GvGRank-Server.runtimeconfig.json
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\bin\Debug\netcoreapp2.2\GvGRank-Server.runtimeconfig.dev.json
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\bin\Debug\netcoreapp2.2\GvGRank-Server.dll
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\bin\Debug\netcoreapp2.2\GvGRank-Server.pdb
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.RazorTargetAssemblyInfo.cache
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.dll
+C:\Users\nikit\source\repos\GvGRank\GvGRank-Server\obj\Debug\netcoreapp2.2\GvGRank-Server.pdb
