@@ -13077,11 +13077,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nikit\\source\\repos\\ActualProjects\\GvGRank\\GvGRank-Server\\GvGRank-Server.csproj",
+      "projectUniqueName": "C:\\Users\\nikit\\source\\repos\\Projects\\GvGRank\\GvGRank-Server\\GvGRank-Server.csproj",
       "projectName": "GvGRank-Server",
-      "projectPath": "C:\\Users\\nikit\\source\\repos\\ActualProjects\\GvGRank\\GvGRank-Server\\GvGRank-Server.csproj",
+      "projectPath": "C:\\Users\\nikit\\source\\repos\\Projects\\GvGRank\\GvGRank-Server\\GvGRank-Server.csproj",
       "packagesPath": "C:\\Users\\nikit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nikit\\source\\repos\\ActualProjects\\GvGRank\\GvGRank-Server\\obj\\",
+      "outputPath": "C:\\Users\\nikit\\source\\repos\\Projects\\GvGRank\\GvGRank-Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
