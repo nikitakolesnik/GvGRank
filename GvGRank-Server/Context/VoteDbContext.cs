@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GvGRank_Server.Entities;
+using GvGRank_Server.Enums;
+using Microsoft.EntityFrameworkCore;
 
-namespace GvGRank_Server.Models
+namespace GvGRank_Server.Context
 {
 	public class VoteDbContext : DbContext
 	{
@@ -172,12 +174,18 @@ namespace GvGRank_Server.Models
 
 			int counter = 1;
 
-			foreach (string playerName in activeFronts) modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = true, Role = 1 });
-			foreach (string playerName in activeMids) modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = true, Role = 2 });
-			foreach (string playerName in activeBacks) modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = true, Role = 3 });
-			foreach (string playerName in inactiveFronts) modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = false, Role = 1 });
-			foreach (string playerName in inactiveMids) modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = false, Role = 2 });
-			foreach (string playerName in inactiveBacks) modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = false, Role = 3 });
+			foreach (string playerName in activeFronts)
+				modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = true, Role = Role.Front });
+			foreach (string playerName in activeMids)
+				modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = true, Role = Role.Mid });
+			foreach (string playerName in activeBacks)
+				modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = true, Role = Role.Back });
+			foreach (string playerName in inactiveFronts)
+				modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = false, Role = Role.Front });
+			foreach (string playerName in inactiveMids)
+				modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = false, Role = Role.Mid });
+			foreach (string playerName in inactiveBacks)
+				modelbuilder.Entity<Player>().HasData(new Player() { Id = counter++, Name = playerName, Active = false, Role = Role.Back });
 		}
 	}
 }

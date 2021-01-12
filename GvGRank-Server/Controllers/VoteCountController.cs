@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using GvGRank_Server.Services;
 using Microsoft.AspNetCore.Mvc;
-using GvGRank_Server.Models;
+using System.Threading.Tasks;
 
 namespace GvGRank_Server.Controllers
 {
@@ -8,18 +8,18 @@ namespace GvGRank_Server.Controllers
 	[ApiController]
 	public class VoteCountController : ControllerBase
 	{
-		private readonly VoteDbContext _context;
+		private readonly IVoteRepository _repo;
 
-		public VoteCountController(VoteDbContext context)
+		public VoteCountController(IVoteRepository repo)
 		{
-			_context = context;
+			_repo = repo ?? throw new System.ArgumentNullException(nameof(repo));
 		}
 
 		// GET: api/VoteCount
 		[HttpGet]
-		public int GetVotes()
+		public async Task<int> Get()
 		{
-			return _context.Votes.Count();
+			return await _repo.GetVoteCountAsync();
 		}
 	}
 }

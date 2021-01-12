@@ -1,4 +1,6 @@
-﻿namespace GvGRank_Server.Models.UtilityModels
+﻿using GvGRank_Server.Enums;
+
+namespace GvGRank_Server.Models
 {
 	public class VoteSmall
 	{
@@ -7,6 +9,6 @@
 
 		public int WinId { get; set; }
 		public int LoseId { get; set; }
-		public int Role { get; set; } = 0;
+		public Role Role { get; set; } = Role.Unset;
 	}
 }

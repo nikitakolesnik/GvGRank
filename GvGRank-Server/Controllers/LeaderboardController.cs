@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using GvGRank_Server.Services;
 using Microsoft.AspNetCore.Mvc;
-using GvGRank_Server.Models;
+using System.Threading.Tasks;
 
 namespace GvGRank_Server.Controllers
 {
@@ -8,24 +8,18 @@ namespace GvGRank_Server.Controllers
 	[ApiController]
 	public class LeaderboardController : ControllerBase
 	{
-		private VoteDbContext _context;
+		private readonly ILeaderboardRepository _repo;
 
-		public LeaderboardController(VoteDbContext context)
+		public LeaderboardController(ILeaderboardRepository repo)
 		{
-			_context = context;
+			_repo = repo;
 		}
 
 		// GET api/leaderboard
 		[HttpGet]
-		public object[] Get()
+		public async Task<object[]> Get()
 		{
-			const int minVotesToShow = 10;
-
-			return _context.Players
-				.OrderByDescending(x => x.Shitlo)
-				.Where(x => x.Wins + x.Losses >= minVotesToShow && x.Active)
-				.Select(x => new { x.Role, x.Name })
-				.ToArray();
+			return await _repo.GetLeaderboardAsync();
 		}
 	}
 }

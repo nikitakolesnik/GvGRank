@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
+﻿using GvGRank_Server.Enums;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace GvGRank_Server.Models
+namespace GvGRank_Server.Entities
 {
 	public class Player
 	{
@@ -15,10 +16,10 @@ namespace GvGRank_Server.Models
 		public string Name { get; set; }
 
 		[DefaultValue(0)] // Median rating should be zero
-		public int Shitlo { get; set; } = 0; // Thanks Eight Bit for christening our rating system
+		public int Rating { get; set; } = 0;
 
 		[DefaultValue(0)]
-		public int Role { get; set; } = 0; // 1 = front, 2 = mid, 3 = back
+		public Role Role { get; set; } = Role.Unset;
 
 		[DefaultValue(0)]
 		public int Wins { get; set; } = 0;

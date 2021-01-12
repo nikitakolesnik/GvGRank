@@ -1,4 +1,4 @@
-﻿namespace GvGRank_Server.Models.UtilityModels
+﻿namespace GvGRank_Server.Models
 {
 	public class VotePost
 	{

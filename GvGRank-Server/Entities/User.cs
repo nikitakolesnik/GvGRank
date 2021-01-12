@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace GvGRank_Server.Models
+namespace GvGRank_Server.Entities
 {
 	public class User
 	{

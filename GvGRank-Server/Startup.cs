@@ -1,19 +1,21 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using GvGRank_Server.Context;
+using GvGRank_Server.Hubs;
+using GvGRank_Server.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using GvGRank_Server.Models;
-using GvGRank_Server.Hubs;
 using System;
-using System.Threading;
 using System.Linq;
+using System.Threading;
 
 namespace GvGRank_Server
 {
 	public class Startup
 	{
+		private const bool _useCORS = false;
 		private Timer _decrementingTimer;
 
 		public Startup(IConfiguration configuration)
@@ -27,27 +29,29 @@ namespace GvGRank_Server
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-			string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-			services.AddDbContext<VoteDbContext>(o => o.UseSqlServer(connectionString));
-
-			//services.AddCors(options =>
-			//{
-			//	options.AddPolicy("CorsPolicy",
-			//		builder =>
-			//		{
-			//			builder
-			//				.WithOrigins("https://gvgrank.azurewebsites.net/")
-			//				//.AllowAnyOrigin()
-			//				.AllowAnyHeader()
-			//				.AllowAnyMethod()
-			//				.AllowCredentials()
-			//			;
-			//		});
-			//});
-
+			services.AddDbContext<VoteDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddSignalR();
+
+			services.AddScoped<ILeaderboardRepository, LeaderboardRepository>();
+			services.AddScoped<IVoteRepository, VoteRepository>();
+
+			if (_useCORS)
+			{
+				services.AddCors(options =>
+				{
+					options.AddPolicy("CorsPolicy",
+						builder =>
+						{
+							builder
+								.WithOrigins("https://gvgrank.azurewebsites.net/")
+								//.AllowAnyOrigin()
+								.AllowAnyHeader()
+								.AllowAnyMethod()
+								.AllowCredentials()
+							;
+						});
+				});
+			}
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,17 +61,13 @@ namespace GvGRank_Server
 			appLifetime.ApplicationStopping.Register(StopDecrementingTimer);
 
 			if (env.IsDevelopment())
-			{
 				app.UseDeveloperExceptionPage();
-			}
 			else
-			{
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
+				app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 
 			app.UseHttpsRedirection();
-			//app.UseCors("CorsPolicy"); // https://stackoverflow.com/a/56984245/10874809
+			if (_useCORS)
+				app.UseCors("CorsPolicy"); // https://stackoverflow.com/a/56984245/10874809
 
 			app.UseDefaultFiles(); // https://stackoverflow.com/a/49126167/10874809
 			app.UseStaticFiles();  // ^
@@ -93,7 +93,7 @@ namespace GvGRank_Server
 							.Where(user => user.VoteLimit > 0)
 							.ToList()
 							.ForEach(user => user.VoteLimit = 0);
-						
+
 						context.Users
 							.Where(user => user.AntiTamper > 1)
 							.ToList()
