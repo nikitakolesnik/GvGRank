@@ -61,6 +61,7 @@ namespace GvGRank_Server.Controllers
 
 
 		// POST: api/Vote
+		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] VotePost v)
 		{
 			try

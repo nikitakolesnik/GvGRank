@@ -59,7 +59,7 @@ namespace GvGRank_Server.Services
 			return await _context.Votes.CountAsync();
 		}
 
-		public async Task<VotePair> GetVotePairAsync(string ip)
+		public async Task<object> GetVotePairAsync(string ip)
 		{
 			User user = await this.IdentifyUserAsync(ip); // Returns null if user has not voted before
 
@@ -83,7 +83,7 @@ namespace GvGRank_Server.Services
 
 			// Get all votes made on active players
 
-			List<VoteSmall> usersActiveVotes =
+			List<VoteSmall> usersActiveVotes = await
 				(from v in _context.Votes
 				 join p1 in activePlayers on v.WinId equals p1.Id
 				 join p2 in activePlayers on v.LoseId equals p2.Id
@@ -96,7 +96,7 @@ namespace GvGRank_Server.Services
 					 LoseId = v.LoseId,
 					 Role = p1.Role
 				 })
-				.ToList();
+				.ToListAsync();
 
 			int maxVotes = activePlayers.Count() - 1; // How many valid votes can exist per player
 
@@ -173,12 +173,12 @@ namespace GvGRank_Server.Services
 				}
 			}
 
-			return new VotePair
+			return new //VotePair
 			{
-				Name1 = player1.Name,
-				Name2 = player2.Name,
-				Id1 = player1.Id,
-				Id2 = player2.Id
+				name1 = player1.Name,
+				name2 = player2.Name,
+				id1 = player1.Id,
+				id2 = player2.Id
 			};
 		}
 

@@ -7,7 +7,7 @@ namespace GvGRank_Server.Services
 	{
 		Task<string[][]> GetRecentVotesAsync(int count, string player);
 		Task<int> GetVoteCountAsync();
-		Task<VotePair> GetVotePairAsync(string ip);
+		Task<object> GetVotePairAsync(string ip);
 		Task SubmitVoteAsync(VotePost v, string ip);
 	}
 }
