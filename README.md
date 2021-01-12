@@ -2,6 +2,8 @@ An API & web client which identified users by their IP address, and would repeat
 
 This was live for three weeks. I expected it to accrue 5,000 votes over its lifetime, which it broke in the first hour. By the time I shut it down, there had been over 50,000 votes made (60,000 including votes from users which I purged for extreme low-integrity use) and a few hundred unique users.
 
+While I'm happy with the results and have even given the source code a much needed "face-lift" for the sake of being presentable, I've learned a lot since writing this and feel that my other project ("slambot") is more representative of my organization and coding style.
+
 Screenshot: 
 https://i.imgur.com/iqfWkmM.png
 
