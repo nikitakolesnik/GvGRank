@@ -26,7 +26,7 @@ namespace GvGRank_Server.Controllers
 			{
 				return new OkObjectResult(await _repo.GetVotePairAsync(Request.HttpContext.Connection.RemoteIpAddress.ToString()));
 			}
-			catch (LowIntegrityVotingException)
+			catch (TooManyVotesException)
 			{
 				return new OkObjectResult(new
 				{
@@ -36,7 +36,7 @@ namespace GvGRank_Server.Controllers
 					id2 = 0
 				});
 			}
-			catch (TooManyVotesException)
+			catch (LowIntegrityVotingException)
 			{
 				return new OkObjectResult(new
 				{
