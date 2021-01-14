@@ -52,6 +52,8 @@ namespace GvGRank_Server
 						});
 				});
 			}
+
+			services.AddResponseCaching();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +61,8 @@ namespace GvGRank_Server
 		{
 			appLifetime.ApplicationStarted.Register(() => StartDecrementingTimer(app.ApplicationServices));
 			appLifetime.ApplicationStopping.Register(StopDecrementingTimer);
+
+			app.UseResponseCaching();
 
 			if (env.IsDevelopment())
 				app.UseDeveloperExceptionPage();
